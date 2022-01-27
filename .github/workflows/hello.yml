@@ -1,10 +1,8 @@
 name: build
 
 on:
-  workflow_run:
-    workflows: [abaplint]
-    types:
-      - completed
+  check_suite:
+    types: [completed]
 
 jobs:
   build:
