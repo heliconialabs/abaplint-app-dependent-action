@@ -1,0 +1,10 @@
+name: followup
+
+on:
+  check_run:
+
+jobs:
+  followup:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo hello
