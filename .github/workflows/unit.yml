@@ -1,0 +1,23 @@
+name: unit
+
+on:
+  pull_request
+
+jobs:
+  wait:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+     - name: Wait for other checks to succeed
+       uses: lewagon/wait-on-check-action@v1.1.1
+       with:
+         ref: ${{ github.event.pull_request.head.sha }}
+         check-name: abaplint
+         repo-token: ${{ secrets.GITHUB_TOKEN }}
+         wait-interval: 1
+  unit:
+    needs: wait
+    runs-on: ubuntu-latest
+    steps:
+    - name: Echo github context
+      run: echo '${{ toJson(github.event) }}' || true
