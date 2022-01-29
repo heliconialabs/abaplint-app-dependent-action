@@ -19,5 +19,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Echo github context
-      continue-on-error: true
       run: echo '${{ toJson(github.event) }}' || true
