@@ -15,6 +15,7 @@ jobs:
          repo-token: ${{ secrets.GITHUB_TOKEN }}
          wait-interval: 1
   unit:
+    needs: wait
     runs-on: ubuntu-latest
     steps:
     - name: Echo github context
